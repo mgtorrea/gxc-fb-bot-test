@@ -57,6 +57,7 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 
 				if (event.isTextMessageEvent()) {
 					final String text = event.asTextMessageEvent().text();
+					LOG.info("MENSAJE DE TEXTO RECIBIDO DEL USUARIO CON ID ["+senderId+"]: "+text);
 					final TextMessage textMessage = TextMessage.create("==>" + text.toUpperCase() + "<==");
 					final MessagePayload messagePayload = MessagePayload.create(senderId, textMessage);
 					try {

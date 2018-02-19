@@ -94,11 +94,7 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 		LOG.info("MENSAJE DE TEXTO RECIBIDO DEL USUARIO CON ID [" + senderId + "]: " + text);
 		final TextMessage textMessage = TextMessage.create("==>" + text.toUpperCase() + "<==");
 		final MessagePayload messagePayload = MessagePayload.create(senderId, MessagingType.RESPONSE, textMessage);
-		try {
-			messenger.send(messagePayload);
-		} catch (Exception e) {
-			LOG.error("Error al enviar el mensaje", e);
-		}
+		messenger.send(messagePayload);
 	}
 
 	private void processPayload(String payload, String signature) {
@@ -109,7 +105,7 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 				try {
 					sendWelcomeMessage(senderId, event);
 				} catch (Exception e) {
-					LOG.error("Error al enviar el mensaje de bienvenida.");
+					LOG.error("Error al enviar el mensaje de bienvenida.", e);
 				}
 
 				if (event.isTextMessageEvent()) {

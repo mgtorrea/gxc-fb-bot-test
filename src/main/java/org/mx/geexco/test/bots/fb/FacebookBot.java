@@ -31,6 +31,7 @@ public class FacebookBot {
 	                .addHttpListener(puerto, hostname)
 	                .setHandler(Handlers.path()
 	                        .addExactPath("/webhook", new EagerFormParsingHandler().setNext(new WebhookHandler()))
+	                        .addExactPath("/img", new EagerFormParsingHandler().setNext(new ImageHandler()))
 	                ).build();
 	        log.info("Server started on " + hostname + ":" + puerto);
 	        server.start();

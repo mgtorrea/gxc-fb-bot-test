@@ -66,7 +66,7 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 
 	private void sendWelcomeMessage(String senderId, Event event) throws Exception {
 		final List<Button> buttons = Arrays.asList(
-				UrlButton.create("Aviso de privacidad", new URL("http://www.google.com")),
+				UrlButton.create("Aviso de privacidad", new URL("https://www.google.com")),
 				CallButton.create("Línea Telefónica", "+15105551234"),
 				PostbackButton.create("Duda sobre X concurso", "DUDAS_CONCURSO"),
 				PostbackButton.create("Duda sobre Y taller", "DUDAS_TALLER"),

@@ -66,10 +66,10 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 
 	private void sendWelcomeMessage(String senderId, Event event) throws Exception {
 		final List<Button> buttons = Arrays.asList(
-				UrlButton.create("Aviso de privacidad", new URL("https://www.google.com")),
-				//CallButton.create("Línea Telefónica", "+15105551234"),
+				UrlButton.create("Aviso de privacidad", new URL("http://www.google.com")),
+				CallButton.create("Línea Telefónica", "+15105551234"),
 				PostbackButton.create("Duda sobre X concurso", "DUDAS_CONCURSO"),
-				//PostbackButton.create("Duda sobre Y taller", "DUDAS_TALLER"),
+				PostbackButton.create("Duda sobre Y taller", "DUDAS_TALLER"),
 				PostbackButton.create("Transparencia", "DUDAS_TRANSP"));
 
 		final DefaultAction defaultAction = DefaultAction.create(
@@ -78,7 +78,8 @@ public class WebhookHandler extends AbstractJSONProcessorHandler {
 				Optional.of(WebviewShareButtonState.HIDE));
 
 		final Element element = Element.create("Bienvenido a XXYYZZ",
-				Optional.of("Subtítulo o saludo adicional. ¿En qué podemos ayudarte?"), Optional.empty(),
+				Optional.of("Subtítulo o saludo adicional. ¿En qué podemos ayudarte?"), 
+				Optional.of(new URL("https://gxc-fb-bot-test.herokuapp.com/img")),
 				Optional.of(defaultAction), Optional.of(buttons));
 
 		final GenericTemplate genericTemplate = GenericTemplate.create(Arrays.asList(element));
